@@ -1,7 +1,10 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, first, tap } from 'rxjs';
+import { catchError, delay, first, of, tap } from 'rxjs';
 import { CourseTs } from '../model/course.ts';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +12,24 @@ import { CourseTs } from '../model/course.ts';
 export class CoursesService {
   private readonly  API = '/assets/courses.json'
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    public dialog: MatDialog
+
+    ) { }
   list()  {
      return this.httpClient.get<CourseTs[]>(this.API)
      .pipe(
-      first(),
-      delay(2000),
-     tap(courses => console.log(courses))
+     catchError(error => {
+      console.log('Erro ao carregar cursos')
+      this.onError('Erro ao carregar cursos')
+      return of([])
+     })
      )
+  }
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg
+    });
   }
 }
