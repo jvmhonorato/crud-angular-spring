@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class CoursesComponent implements OnInit {
 
 
-  courses:Observable<CourseTs[]>;
+  courses$:Observable<CourseTs[]>;
   displayedColumns = ['name', 'category'];
 
 
@@ -21,7 +21,7 @@ export class CoursesComponent implements OnInit {
   constructor(private coursesService: CoursesService){
     //this.courses = [];
     //this.coursesService = new CoursesService
-    this.courses = this.coursesService.list();
+    this.courses$ = this.coursesService.list();
 
     //this.coursesService.list().subscribe(courses => this.courses = courses);
   }
