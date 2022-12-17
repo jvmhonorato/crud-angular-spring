@@ -1,16 +1,22 @@
 package com.honorato.crudspring.controler;
 
+
+
+
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/hello")
-public class HelloController {
+@RequestMapping("/api/courses")
+public class CourseController {
 
-    @GetMapping
-   public String hello() {
-        return "Hello World!";
-    }
     
+    //@ResquestMapping(method = ResquestMethod.GET)
+    @GetMapping
+    public List<Object> list() {
+        return null;
+    }
 }
