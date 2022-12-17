@@ -18,7 +18,9 @@
   <!-- CategoryColumn -->
   <ng-container matColumnDef="category">
     <th mat-header-cell *matHeaderCellDef> Category </th>
-    <td mat-cell *matCellDef="let course"> {{course.category}} </td>
+    <td mat-cell *matCellDef="let course"> {{course.category}}
+      <mat-icon aria-hidden="false" aria-label="Course category">{{ course.category | category}}</mat-icon>
+    </td>
   </ng-container>
 
 
