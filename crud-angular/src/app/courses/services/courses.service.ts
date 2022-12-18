@@ -10,7 +10,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
   providedIn: 'root'
 })
 export class CoursesService {
-  private readonly  API = '/assets/courses.json'
+  private readonly  API = 'api/courses'
 
   constructor(
     private httpClient: HttpClient,
