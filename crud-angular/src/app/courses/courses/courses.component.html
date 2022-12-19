@@ -20,13 +20,43 @@
     <td mat-cell *matCellDef="let course"> {{course.name}} </td>
   </ng-container>
 
-  <!-- CategoryColumn -->
+  <!-- Category Column -->
   <ng-container matColumnDef="category">
     <th mat-header-cell *matHeaderCellDef> Category </th>
     <td mat-cell *matCellDef="let course"> {{course.category}}
       <mat-icon aria-hidden="false" aria-label="Course category">{{ course.category | category}}</mat-icon>
     </td>
   </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>
+      <button mat-mini-fab color="primary" aria-label="Add course" (click)="onAdd()">
+        <mat-icon >
+          add
+          </mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let course">
+      <button mat-mini-fab color="primary" aria-label="Edit course">
+        <mat-icon>
+          <span class="material-symbols-outlined">
+            edit
+            </span>
+        </mat-icon>
+      </button>
+      <button mat-mini-fab color="warn" aria-label="Edit course">
+        <mat-icon>
+          <span class="material-symbols-outlined">
+            delete
+            </span>
+        </mat-icon>
+      </button>
+
+    </mat-cell >
+
+    </ng-container>
 
 
 
