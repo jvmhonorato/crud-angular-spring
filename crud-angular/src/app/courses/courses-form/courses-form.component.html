@@ -1,9 +1,9 @@
 <mat-card >
 
   <mat-toolbar color="primary">
-    
+
     Detalhes do curso
-    
+
   </mat-toolbar>
    <mat-card-content>
     <form [formGroup]="form" >
@@ -12,7 +12,13 @@
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <input matInput placeholder="Categoria" formControlName="category">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="category">
+          <mat-option value="null"></mat-option>
+          <mat-option value="front-end">Front-End</mat-option>
+          <mat-option value="back-end">Back-End</mat-option>
+        </mat-select>
+
       </mat-form-field>
     </form>
   </mat-card-content>

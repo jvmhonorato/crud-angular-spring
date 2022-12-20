@@ -1,8 +1,9 @@
+import { CourseTs } from './../model/course.ts';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, delay, first, of, tap } from 'rxjs';
-import { CourseTs } from '../model/course.ts';
+
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
@@ -31,5 +32,9 @@ export class CoursesService {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
+  }
+
+  save(record: CourseTs){
+   return this.httpClient.post<CourseTs>(this.API, record).pipe(first())
   }
 }
