@@ -1,0 +1,61 @@
+<p>courses-list works!</p>
+
+<mat-table  [dataSource]="courses" class="mat-table">
+
+  <!-- _id Column -->
+  <ng-container matColumnDef="_id">
+    <mat-header-cell  *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell  *matCellDef="let course"> {{course._id}} </mat-cell>
+  </ng-container>
+
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell  *matHeaderCellDef> Curso </mat-header-cell>
+    <mat-cell  *matCellDef="let course"> {{course.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Category Column -->
+  <ng-container matColumnDef="category">
+    <mat-header-cell  *matHeaderCellDef> Category </mat-header-cell>
+    <mat-cell  *matCellDef="let course"> {{course.category}}
+      <mat-icon aria-hidden="false" aria-label="Course category">{{ course.category | category}}</mat-icon>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="action-column-header">
+      <button mat-mini-fab color="primary" aria-label="Add course" (click)="onAdd()">
+        <mat-icon >
+          add
+          </mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let course" class="action-column">
+      <button mat-mini-fab color="primary" aria-label="Edit course">
+        <mat-icon>
+          <span class="material-symbols-outlined">
+            edit
+            </span>
+        </mat-icon>
+      </button>
+      <button mat-mini-fab color="warn" aria-label="Edit course">
+        <mat-icon>
+          <span class="material-symbols-outlined">
+            delete
+            </span>
+        </mat-icon>
+      </button>
+
+    </mat-cell >
+
+    </ng-container>
+
+
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
