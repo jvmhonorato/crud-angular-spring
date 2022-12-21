@@ -6,7 +6,13 @@
 
     <div class="column-flex  mat-elevation-z8">
  <!-- condicional pra carregar os dados(course) ou o spinner(loading) -->
-    <app-courses-list *ngIf="courses$ | async as courses; else loading" [courses]="courses"></app-courses-list>
+    <app-courses-list
+    *ngIf="courses$ | async as courses; else loading"
+    [courses]="courses"
+    (add)="onAdd()"
+    >
+
+    </app-courses-list>
 
 
 <ng-template #loading=>

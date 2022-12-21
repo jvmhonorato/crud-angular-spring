@@ -1,9 +1,10 @@
 import { MatDialog } from '@angular/material/dialog';
-import { CoursesService } from './../services/courses.service';
-import { CourseTs } from './../model/course.ts';
+import { CoursesService } from '../../services/courses.service';
+import { CourseTs } from '../../model/course.ts';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 
 @Component({
@@ -28,12 +29,11 @@ export class CoursesComponent implements OnInit {
     ){
 
     this.courses$ = this.coursesService.list()
-    .pipe(
-
-    )
+    .pipe(  );
 
 
   }
+
 ngOnInit(): void {
 
 
