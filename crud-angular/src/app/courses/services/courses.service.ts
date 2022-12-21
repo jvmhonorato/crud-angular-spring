@@ -34,7 +34,7 @@ export class CoursesService {
     });
   }
 
-  save(record: CourseTs){
+  save(record: Partial<CourseTs>){
    return this.httpClient.post<CourseTs>(this.API, record).pipe(first())
   }
 }
