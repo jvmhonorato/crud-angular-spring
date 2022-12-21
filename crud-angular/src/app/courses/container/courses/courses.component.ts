@@ -41,5 +41,8 @@ ngOnInit(): void {
 onAdd(){
   this.router.navigate([ 'new'], {relativeTo: this.route})
 }
+onEdit(course: CourseTs){
+  this.router.navigate([ 'edit', course._id], {relativeTo: this.route})
+}
 
 }
