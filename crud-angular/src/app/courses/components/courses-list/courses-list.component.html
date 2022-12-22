@@ -34,15 +34,15 @@
     </mat-header-cell>
 
     <mat-cell *matCellDef="let course" class="action-column">
-      <button mat-mini-fab color="primary" aria-label="Edit course">
+      <button mat-mini-fab color="primary" aria-label="Edit course" (click)="onEdit(course)">
         <mat-icon>
           <span class="material-symbols-outlined">
             edit
             </span>
         </mat-icon>
       </button>
-      <button mat-mini-fab color="warn" aria-label="Edit course">
-        <mat-icon (click)="onEdit(course)">
+      <button mat-mini-fab color="warn" aria-label="Edit course" >
+        <mat-icon >
           <span class="material-symbols-outlined">
             delete
             </span>
