@@ -1,10 +1,12 @@
-import { MatDialog } from '@angular/material/dialog';
-import { CoursesService } from '../../services/courses.service';
-import { CourseTs } from '../../model/course.ts';
 import { Component, OnInit } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+
+import { CourseTs } from '../../model/course.ts';
+import { CoursesService } from '../../services/courses.service';
 
 
 @Component({
@@ -15,7 +17,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 export class CoursesComponent implements OnInit {
 
 
-  courses$:Observable<CourseTs[]>;
+  courses$:Observable<CourseTs[]> | null = null
   displayedColumns = ['_id','name', 'category', 'actions'];
 
 
@@ -25,13 +27,24 @@ export class CoursesComponent implements OnInit {
     private coursesService: CoursesService,
     public dialog: MatDialog,
     private router: Router,
-    private  route: ActivatedRoute
+    private  route: ActivatedRoute,
+    private _snackBar: MatSnackBar
     ){
 
+      this.refresh()
+
+
+  }
+
+  refresh(){
     this.courses$ = this.coursesService.list()
     .pipe(  );
+  }
 
-
+  onError(errorMsg:string){
+    this.dialog.open(ErrorDialogComponent,{
+       data:errorMsg
+    })
   }
 
 ngOnInit(): void {
@@ -44,5 +57,17 @@ onAdd(){
 onEdit(course: CourseTs){
   this.router.navigate([ 'edit', course._id], {relativeTo: this.route})
 }
+onRemove(course: CourseTs){
+  this.coursesService.remove(course._id).subscribe(
+    () => {
+      this.refresh()
+      this._snackBar.open('Curso removido com sucesso!','X',
+      {duration:  3000, verticalPosition: 'top', horizontalPosition: 'center'});
+
+    },
+    () => this.onError('Deu ruim, error ao remover o curso!')
+
+
+)}
 
 }

@@ -38,7 +38,7 @@ export class CoursesService {
    return this.httpClient.get<CourseTs>(`${this.API}/${id}`)
   }
 
-  // conditional to create or update data 
+  // conditional to create or update data
   save(record: Partial<CourseTs>){
     console.log(record)
     if(record._id){
@@ -55,5 +55,9 @@ export class CoursesService {
 
   private update(record: Partial<CourseTs>){
     return this.httpClient.put<CourseTs>(`${this.API}/${record._id}`, record).pipe(first())
+  }
+
+     remove(id: string){
+    return this.httpClient.delete(`${this.API}/${id}`).pipe(first())
   }
 }
