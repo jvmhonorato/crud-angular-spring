@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { NgModule } from '@angular/core';
 import { CategoryPipe } from './pipes/category.pipe';
+import { ConfimationDialogComponent } from './components/confimation-dialog/confimation-dialog.component';
 
 
 
@@ -12,7 +13,8 @@ import { CategoryPipe } from './pipes/category.pipe';
   declarations: [
 
     ErrorDialogComponent,
-     CategoryPipe
+     CategoryPipe,
+     ConfimationDialogComponent
   ],
   imports:[
     AppMaterialModule,

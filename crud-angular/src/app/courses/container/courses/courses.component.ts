@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 import { CoursesService } from '../../services/courses.service';
 import { of } from 'rxjs';
+import { ConfimationDialogComponent } from 'src/app/shared/components/confimation-dialog/confimation-dialog.component';
 
 
 @Component({
@@ -59,16 +60,27 @@ onEdit(course: CourseTs){
   this.router.navigate([ 'edit', course._id], {relativeTo: this.route})
 }
 onRemove(course: CourseTs){
-  this.coursesService.remove(course._id).subscribe({
-    next:() => {
-      this.refresh()
-      this._snackBar.open('Curso removido com sucesso!','X',
-      {duration:  3000, verticalPosition: 'top', horizontalPosition: 'center'});
+  const dialogRef = this.dialog.open(ConfimationDialogComponent, {
+    data: 'Tem certeza que deseja remover esse curso?',
+  });
 
-    },
-     error:() => this.onError('Deu ruim, error ao remover o curso')
+  dialogRef.afterClosed().subscribe((result:boolean) => {
+      if(result){
+        this.coursesService.remove(course._id).subscribe({
+          next:() => {
+            this.refresh()
+            this._snackBar.open('Curso removido com sucesso!','X',
+            {duration:  3000, verticalPosition: 'top', horizontalPosition: 'center'});
+
+          },
+           error:() => this.onError('Deu ruim, error ao remover o curso')
 
 
-  })}
+        })
+
+      }
+  });
+
+  }
 
 }
