@@ -8,7 +8,9 @@
    <mat-card-content>
     <form [formGroup]="form" class="min-width" >
       <mat-form-field class="full-width" >
-        <input matInput placeholder="Nome" formControlName="name" required>
+        <mat-label>Nome</mat-label>
+        <input matInput  formControlName="name" required>
+         <mat-error *ngIf="form.get('name')?.invalid">{{getErrorMessage('name')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
