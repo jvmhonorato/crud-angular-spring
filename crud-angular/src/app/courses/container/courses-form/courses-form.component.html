@@ -9,13 +9,14 @@
     <form [formGroup]="form" class="min-width" >
       <mat-form-field class="full-width" >
         <mat-label>Nome</mat-label>
-        <input matInput  formControlName="name" required>
+        <input matInput  formControlName="name" #name>
+        <mat-hint align="end">{{name.value.length}}/100</mat-hint>
          <mat-error *ngIf="form.get('name')?.invalid">{{getErrorMessage('name')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
         <mat-label>Categoria</mat-label>
-        <mat-select formControlName="category" required>
+        <mat-select formControlName="category" >
           <mat-option value="null"></mat-option>
           <mat-option value="front-end">Front-End</mat-option>
           <mat-option value="back-end">Back-End</mat-option>
