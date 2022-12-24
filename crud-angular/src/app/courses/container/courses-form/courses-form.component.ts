@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { CourseTs } from '../../model/course.ts';
@@ -16,8 +16,8 @@ export class CoursesFormComponent implements OnInit {
 
   form = this.formBuilder.group({
     _id:[''],
-    name: [''],
-    category: ['']
+    name: ['',[Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+    category: ['',[Validators.required]]
   })
 
   constructor(
