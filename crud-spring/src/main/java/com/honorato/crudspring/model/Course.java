@@ -1,5 +1,7 @@
 package com.honorato.crudspring.model;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,6 +21,8 @@ import lombok.Data;
 @Data
 @Entity
 //@Table(name = "cursos")
+@SQLDelete(sql = "UPDATE Course SET status = 'Inactive' WHERE id = ?" )
+@Where(clause = "status = 'Active'")
 public class Course {
 
     @Id
