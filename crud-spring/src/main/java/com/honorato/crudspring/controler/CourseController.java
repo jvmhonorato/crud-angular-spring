@@ -20,30 +20,38 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.honorato.crudspring.model.Course;
 import com.honorato.crudspring.repository.CourseRepository;
+import com.honorato.crudspring.service.CourseService;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import lombok.AllArgsConstructor;
+
 
 @RestController
 @RequestMapping("/api/courses")
-@AllArgsConstructor
+
 @Validated
 public class CourseController {
 
 
     private final CourseRepository courseRepository;
+    private final CourseService courseService;
 
-    //@ResquestMapping(method = ResquestMethod.GET)
+
+    public CourseController(CourseRepository courseRepository, CourseService courseService) {
+        this.courseRepository = courseRepository;
+        this.courseService = courseService;
+    }
+
+    
     @GetMapping
     public @ResponseBody List<Course> list() {
-        return courseRepository.findAll();
+        return courseService.list();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Course> findById(@PathVariable @NotNull @Positive Long id){
-        return courseRepository
+        return courseService
         .findById(id)
         .map(recordFound -> ResponseEntity.ok().body(recordFound))
         .orElse(ResponseEntity.notFound().build());
@@ -51,7 +59,6 @@ public class CourseController {
 
 
     
-    //@ResquestMapping(method = ResquestMethod.GET)
         @PostMapping
         @ResponseStatus(code = HttpStatus.CREATED)
         public Course create(@RequestBody @Valid Course course){
