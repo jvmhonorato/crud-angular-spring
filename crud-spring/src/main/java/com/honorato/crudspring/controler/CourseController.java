@@ -2,7 +2,7 @@ package com.honorato.crudspring.controler;
 
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.honorato.crudspring.model.Course;
-import com.honorato.crudspring.repository.CourseRepository;
+
 import com.honorato.crudspring.service.CourseService;
 
 import jakarta.validation.Valid;
