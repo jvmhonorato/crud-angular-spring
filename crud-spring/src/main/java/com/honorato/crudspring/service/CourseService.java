@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.honorato.crudspring.exception.RecordNotFoundExeption;
 import com.honorato.crudspring.model.Course;
 import com.honorato.crudspring.repository.CourseRepository;
 
@@ -27,8 +28,8 @@ public class CourseService {
     public  List<Course> list() {
         return courseRepository.findAll();
     }
-    public Optional<Course> findById(@PathVariable @NotNull @Positive Long id){
-        return courseRepository.findById(id);
+    public Course findById(@PathVariable @NotNull @Positive Long id){
+        return courseRepository.findById(id).orElseThrow(() -> new RecordNotFoundExeption(id));
       
     }
     public Course create( @Valid Course course){
