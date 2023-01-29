@@ -66,20 +66,16 @@ public class CourseController {
 
 
     @PutMapping("/{id}")
-     public ResponseEntity<Course> update(@PathVariable @NotNull @Positive Long id, @RequestBody Course course) {
+     public Course update(@PathVariable @NotNull @Positive Long id, @RequestBody Course course) {
         return courseService
-        .update(id, course)
-        .map(recordFound -> ResponseEntity.ok().body(recordFound))
-        .orElse(ResponseEntity.notFound().build());
+        .update(id, course);
+       
      }
     
          @DeleteMapping("/{id}")
-     public ResponseEntity<Void> delete(@PathVariable @NotNull @Positive Long id) {
-        if(courseService
-        .delete(id)){
-       return ResponseEntity.noContent().<Void>build();
-        }
-            return ResponseEntity.notFound().build();
+         @ResponseStatus(code = HttpStatus.NO_CONTENT)
+     public void delete(@PathVariable @NotNull @Positive Long id) {
+        courseService.delete(id);
         
         
      }
