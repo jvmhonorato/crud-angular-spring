@@ -34,11 +34,21 @@ Here are the technologies used in this project.
   
   
 * To install the dependencies.
-  - npm install
+```bash
+  $ npm install
+  ```
   
 * To run the project.
-  - Front-end:  npm start
-  - Back-end: run spring
+    - Front-end
+    - Back-end
+```bash
+  $ npm run start
+  ```
+     
+  ```bash
+  Rund the Spring
+  
+  ```
 ## How to use
 
 ### 1 - Use CRUD to manege your courses  
