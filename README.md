@@ -4,7 +4,7 @@
 application to manage completed courses
 
 
-## Technology 
+## Technologies 
 
 Here are the technologies used in this project.
 
