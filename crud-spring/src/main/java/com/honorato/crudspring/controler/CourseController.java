@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.honorato.crudspring.dto.CourseDTO;
 import com.honorato.crudspring.model.Course;
 
 import com.honorato.crudspring.service.CourseService;
@@ -45,7 +46,7 @@ public class CourseController {
 
     
     @GetMapping
-    public @ResponseBody List<Course> list() {
+    public @ResponseBody List<CourseDTO> list() {
         return courseService.list();
     }
 
