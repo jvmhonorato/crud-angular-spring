@@ -51,7 +51,7 @@ public class CourseController {
     }
 
     @GetMapping("/{id}")
-    public Course findById(@PathVariable @NotNull @Positive Long id){
+    public CourseDTO findById(@PathVariable @NotNull @Positive Long id){
         return courseService
         .findById(id);
     }
@@ -59,7 +59,7 @@ public class CourseController {
     
         @PostMapping
         @ResponseStatus(code = HttpStatus.CREATED)
-        public Course create(@RequestBody @Valid Course course){
+        public CourseDTO create(@RequestBody @Valid Course course){
          return courseService.create(course);
            
     }
@@ -67,7 +67,7 @@ public class CourseController {
 
 
     @PutMapping("/{id}")
-     public Course update(@PathVariable @NotNull @Positive Long id, @RequestBody Course course) {
+     public CourseDTO update(@PathVariable @NotNull @Positive Long id, @RequestBody Course course) {
         return courseService
         .update(id, course);
        

@@ -36,21 +36,24 @@ public class CourseService {
         .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
      
     }
-    public Course findById(@PathVariable @NotNull @Positive Long id){
-        return courseRepository.findById(id).orElseThrow(() -> new RecordNotFoundExeption(id));
+
+
+    public CourseDTO findById(@PathVariable @NotNull @Positive Long id){
+        return courseRepository.findById(id).map(courseMapper::toDTO)
+        .orElseThrow(() -> new RecordNotFoundExeption(id));
       
     }
-    public Course create( @Valid Course course){
-        return courseRepository.save(course);
+    public CourseDTO create( @Valid Course course){
+        return courseMapper.toDTO(courseRepository.save(course)) ;
           
    }
-   public Course update( @NotNull @Positive Long id,  Course course) {
+   public CourseDTO update( @NotNull @Positive Long id,  Course course) {
     return courseRepository
     .findById(id)
     .map(recordFound -> {
         recordFound.setName(course.getName());
         recordFound.setCategory(course.getCategory());
-        return courseRepository.save(recordFound);
+        return courseMapper.toDTO(courseRepository.save(recordFound)) ;
         
     }).orElseThrow(() -> new RecordNotFoundExeption(id));
     
