@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.honorato.crudspring.dto.CourseDTO;
+import com.honorato.crudspring.dto.mapper.CourseMapper;
 import com.honorato.crudspring.exception.RecordNotFoundExeption;
 import com.honorato.crudspring.model.Course;
 import com.honorato.crudspring.repository.CourseRepository;
@@ -21,21 +22,19 @@ import jakarta.validation.constraints.Positive;
 @Service
 public class CourseService {
     private final CourseRepository courseRepository;
-    
+    private final CourseMapper courseMapper;
 
-    public CourseService(CourseRepository courseRepository) {
+    public CourseService(CourseRepository courseRepository, CourseMapper courseMapper) {
         this.courseRepository = courseRepository;
+        this.courseMapper = courseMapper;
     }
 
     public  List<CourseDTO> list() {
-        List<Course> courses = courseRepository.findAll();
-        List<CourseDTO> dtos = new ArrayList<>(courses.size());
-        for (Course course : courses) {
-            
-            CourseDTO dto =  new CourseDTO(course.getId(), course.getName() , course.getCategory());
-            dtos.add(dto);
-        }
-        return dtos;
+        return courseRepository.findAll()
+        .stream()
+        .map(courseMapper::toDTO)
+        .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+     
     }
     public Course findById(@PathVariable @NotNull @Positive Long id){
         return courseRepository.findById(id).orElseThrow(() -> new RecordNotFoundExeption(id));
