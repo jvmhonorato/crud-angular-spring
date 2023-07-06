@@ -9,6 +9,8 @@ import com.honorato.crudspring.enums.Category;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -38,9 +40,10 @@ public class Course {
     private String name;
 
     @NotNull
-    @Length(max = 10)
-    @Pattern(regexp = "back-end|front-end")
-    @Column(length = 10, nullable = false)
+    //@Length(max = 10)
+    //@Pattern(regexp = "back-end|front-end")
+    @Column( nullable = false)
+    @Enumerated(EnumType.ORDINAL)
     private Category category;
 
     @NotNull
