@@ -43,7 +43,7 @@ public class Course {
     //@Length(max = 10)
     //@Pattern(regexp = "back-end|front-end")
     @Column( nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     @NotNull

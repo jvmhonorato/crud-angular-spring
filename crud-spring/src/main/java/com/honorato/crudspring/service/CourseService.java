@@ -53,7 +53,7 @@ public class CourseService {
     .findById(id)
     .map(recordFound -> {
         recordFound.setName(course.name());
-        recordFound.setCategory(Category.FRONTEND);
+        recordFound.setCategory(Category.FRONT_END);
         return courseMapper.toDTO(courseRepository.save(recordFound)) ;
         
     }).orElseThrow(() -> new RecordNotFoundExeption(id));
