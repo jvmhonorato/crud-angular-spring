@@ -6,8 +6,10 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.honorato.crudspring.enums.Category;
+import com.honorato.crudspring.enums.converters.CategoryConverter;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -42,8 +44,8 @@ public class Course {
     @NotNull
     //@Length(max = 10)
     //@Pattern(regexp = "back-end|front-end")
-    @Column( nullable = false)
-    @Enumerated(EnumType.STRING)
+    @Column(length = 10, nullable = false)
+    @Convert( converter = CategoryConverter.class)
     private Category category;
 
     @NotNull
