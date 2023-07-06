@@ -5,6 +5,7 @@ import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.honorato.crudspring.enums.Category;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,7 +41,7 @@ public class Course {
     @Length(max = 10)
     @Pattern(regexp = "back-end|front-end")
     @Column(length = 10, nullable = false)
-    private String category;
+    private Category category;
 
     @NotNull
     @Length(max = 10)

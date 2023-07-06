@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.honorato.crudspring.dto.CourseDTO;
 import com.honorato.crudspring.dto.mapper.CourseMapper;
+import com.honorato.crudspring.enums.Category;
 import com.honorato.crudspring.exception.RecordNotFoundExeption;
 import com.honorato.crudspring.model.Course;
 import com.honorato.crudspring.repository.CourseRepository;
@@ -43,16 +44,16 @@ public class CourseService {
         .orElseThrow(() -> new RecordNotFoundExeption(id));
       
     }
-    public CourseDTO create( @Valid Course course){
-        return courseMapper.toDTO(courseRepository.save(course)) ;
+    public CourseDTO create( @Valid @NotNull CourseDTO course){
+        return courseMapper.toDTO(courseRepository.save(courseMapper.toEntity(course))) ;
           
    }
-   public CourseDTO update( @NotNull @Positive Long id,  Course course) {
+   public CourseDTO update( @NotNull @Positive Long id,  CourseDTO course) {
     return courseRepository
     .findById(id)
     .map(recordFound -> {
-        recordFound.setName(course.getName());
-        recordFound.setCategory(course.getCategory());
+        recordFound.setName(course.name());
+        recordFound.setCategory(Category.FRONTEND);
         return courseMapper.toDTO(courseRepository.save(recordFound)) ;
         
     }).orElseThrow(() -> new RecordNotFoundExeption(id));
