@@ -51,7 +51,7 @@ Here are the technologies used in this project.
   ```
 ## How to use
 
-### 1 - Use CRUD to manege your courses  
+### 1 - Use CRUD to manage your courses  
 
 ![angularspring1](https://user-images.githubusercontent.com/101150943/210138189-82f7f05b-5d43-43af-bd13-125390704cc9.jpg)
 
