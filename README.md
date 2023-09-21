@@ -1,6 +1,6 @@
 
 
-## TO-DO-LIST:Angular FRONT-END / CRUD:JAVA-Spring BACK-END
+## TO-DO-LIST: Angular FRONT-END / CRUD:JAVA-Spring BACK-END
 application to manage completed courses
 
 
