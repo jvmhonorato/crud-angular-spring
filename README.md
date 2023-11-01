@@ -6,12 +6,19 @@ application to manage completed courses
 
 ## Technologies 
 
-Here are the technologies used in this project.
+<div style="display: inline_block"><br/>
+  <img align="center" alt="jvmh-typescript" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+  <img align="center" alt="jvmh-angular" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" />
+<img align="center" alt="jvmh-java" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+ <img align="center" alt="jvmh-spring" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" />
+<img align="center" alt="jvmh-karma" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/karma/karma-original.svg" />
+<img align="center" alt="jvmh-materialui" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg" />
 
-* Typescript
-* Angular 15 
-* Java 17
-* Spring
+
+
+
+
+</div>
 
 
 
@@ -46,7 +53,7 @@ Here are the technologies used in this project.
   ```
      
   ```bash
-  Rund the Spring
+  run the Spring
   
   ```
  - See in operation
