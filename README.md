@@ -56,9 +56,7 @@ application to manage completed courses
   run the Spring
   
   ```
- - See in operation
 
-https://user-images.githubusercontent.com/101150943/210138353-a67113cd-5760-400b-809a-910cef87987d.mp4
 
 
 ## Features
