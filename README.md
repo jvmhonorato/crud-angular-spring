@@ -108,7 +108,7 @@ The Angular and Java Decoupled Task List Application provides a robust and user-
   - Deploy on Umbler: soon
   - Repository: https://github.com/vituhonorato/crud-angular-spring
     - In case of sensitive bugs like security vulnerabilities, please contact
-      vituhonorato.89@gmail.com directly instead of using issue tracker. We value your effort
+      honorato.ofc@gmail.com directly instead of using issue tracker. We value your effort
       to improve the security and privacy of this project!
 
   ## Versioning
